@@ -26,4 +26,8 @@ public class Problem {
    public Student[] getStud(){
        return st;
    }
+   public void print(){
+       System.out.println(lect.length);
+       System.out.println(st.length);
+   }
 }

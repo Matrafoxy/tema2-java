@@ -10,15 +10,18 @@ import java.util.*;
  *
  * @author tudor
  */
+
 public class Lecturer extends Person{
     
     String rank;
     String site_web;
     Project[] projects;
     Student[] students_pref;
-    LinkedList<Student> s_p=new LinkedList();
+    LinkedList<Student> s_p=new LinkedList<Student>();
     int capacity = 0;
 
+    Lecturer(){}
+    
     Lecturer(String num, String prenum, String gr, String site,  int cap) {
         first_name = num;
         last_name = prenum;
@@ -43,14 +46,15 @@ public class Lecturer extends Person{
       projects=p;
   }
     @Override
-    public Boolean isFree() {
-        if (capacity > 0) {
-            return true;
-        } else {
-            return false;
-        }
+    public int isFree() {
+        return capacity;
     }
-
+public void incCap(){
+    capacity++;
+}
+public void decCap(){
+    capacity--;
+}
     
     public Project[] getProjects(){
         return projects;
@@ -58,4 +62,11 @@ public class Lecturer extends Person{
     public LinkedList<Student> getStudents_pref(){
         return s_p;
     }
+    @Override
+ public boolean equals(Object obj) {
+     if (obj == null) return false;
+ if (!(obj instanceof Lecturer)) return false;
+ Lecturer comp = (Lecturer) obj;
+ return ( comp.first_name==first_name && comp.last_name==last_name);
+ }
 }

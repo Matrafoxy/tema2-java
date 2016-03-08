@@ -15,15 +15,31 @@ public class Project {
     Lecturer lect;
     int capacity;
 
-    Project(String nume, String cerinte, int cap) {
+    Project(){}
+    
+    Project(String nume, String cerinte,Lecturer lect,int cap) {
         this.nume = nume;
         this.cerinte = cerinte;
         capacity = cap;
+        this.lect=lect;
+    }
+    public Lecturer getLect(){
+        return lect;
     }
 public int over_sub(){
- if(capacity<0)
-     return -1;
- else
-     return 1;
+ return capacity;
 }
+public void incCap(){
+    capacity++;
+}
+public void decCap(){
+    capacity--;
+}
+@Override
+ public boolean equals(Object obj) {
+     if (obj == null) return false;
+ if (!(obj instanceof Project)) return false;
+ Project comp = (Project) obj;
+ return ( comp.nume==nume);
+ }
 }

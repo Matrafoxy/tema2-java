@@ -17,7 +17,7 @@ public abstract class Person {
     }
 
     ;
-public abstract Boolean isFree();
+public abstract int isFree();
 
 }
 
