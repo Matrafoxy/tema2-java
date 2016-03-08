@@ -106,8 +106,9 @@ return worst;
 public void forEach_pj(Student s1,Project p1){
     //int n=p1.getLect().getStudents_pref();
     int g=0;
+    Student s2=new Student();
      Lecturer lect=p1.getLect();
-    for(Student s2 :lect.getStudents_pref()){
+    /*for(Student s2 :lect.getStudents_pref()){
         if(g==1)
         {System.out.println(",,,");  System.out.println(s2.first_name);System.out.println(",,,,");
             s2.getPref().remove(p1);}
@@ -115,7 +116,22 @@ public void forEach_pj(Student s1,Project p1){
         if(s2.equals(s1))
             g=1;
       
-           }       
+           }   */
+     Iterator i=lect.getStudents_pref().listIterator(0);
+     Iterator j;
+     while(i.hasNext()){
+         s2=(Student)i.next();
+         if(g==1){
+         j=s2.getPref().listIterator(0);
+         while(j.hasNext()){
+             if(p1.equals(j.next()))
+                 j.remove();
+         }
+         
+         }
+         if(s1.equals(s2))
+             g=1;
+     }
            
 }
 public void forEach_lk(Student s1,Lecturer lect){
@@ -132,13 +148,15 @@ public void forEach_lk(Student s1,Lecturer lect){
             //if(i.next().getLect().equals(lect))
                  p2=(Project)i.next();
                if(lect.equals(p2.getLect()))
-                 st.getPref().remove(p2);
+                     i.remove();             // st.getPref().remove(p2);
         }
         if(s1.equals(st)){
             g=1;
         }
             
     }
+    
+    
 }
 
 }
